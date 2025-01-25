@@ -8,3 +8,5 @@ repos:
     - id: tofu_tflint
     - id: tofu_trivy
     - id: tofu_docs
+      args:
+      - --hook-config=--create-file-if-not-exist=true
