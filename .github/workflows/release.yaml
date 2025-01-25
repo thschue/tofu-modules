@@ -28,4 +28,4 @@ jobs:
       - uses: googleapis/release-please-action@v4
         id: release
         with:
-          default-branch: main
+          target-branch: main
