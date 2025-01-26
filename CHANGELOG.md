@@ -1,0 +1,23 @@
+# Changelog
+
+## [0.0.2](https://github.com/thschue/tofu-modules/compare/v0.0.1...v0.0.2) (2025-01-26)
+
+
+### Features
+
+* add devenv and checkov ([2e0a494](https://github.com/thschue/tofu-modules/commit/2e0a49432fe084ca59683e618ca82eda56e584bf))
+* add gitleaks ([188bb05](https://github.com/thschue/tofu-modules/commit/188bb05716ca863dafc9374a55b38d48227a4adc))
+* add pre-commit and renovate ([b7f3320](https://github.com/thschue/tofu-modules/commit/b7f3320f7c0fcd759345dbffceda4e5f709352d0))
+* add talos cluster ([0b4b663](https://github.com/thschue/tofu-modules/commit/0b4b663e89d17c07a0bea7caf3cf060c51cd71b6))
+* add version constraint to cilium module ([ede662d](https://github.com/thschue/tofu-modules/commit/ede662d1ad3fd4238ba6ba6697ccb03c8c42fe0a))
+* configure release-please ([ee4efb8](https://github.com/thschue/tofu-modules/commit/ee4efb87e2f6dda4f4aaed9946be51a48a3d801f))
+* create README if it doesn't exist ([ac09d93](https://github.com/thschue/tofu-modules/commit/ac09d93b0a45a428318f9e345b9d8ef59b00b839))
+* fix release please ([98e7552](https://github.com/thschue/tofu-modules/commit/98e7552417263e5b5cc6355b492f3b21046e101d))
+* fix release please ([cd09aac](https://github.com/thschue/tofu-modules/commit/cd09aac7266a9bcd9ca15ab02a7be017018a66b8))
+
+
+### Other
+
+* **deps:** update helm release cilium to v1.16.6 ([064848b](https://github.com/thschue/tofu-modules/commit/064848b128a105aca1318011c455782f7c9559cd))
+* **deps:** update terraform proxmox to v0.70.0 ([87063f8](https://github.com/thschue/tofu-modules/commit/87063f809aa52f79ef363436a5e23ee6e2e41d4e))
+* **deps:** update terraform talos to v0.7.1 ([2fbed6a](https://github.com/thschue/tofu-modules/commit/2fbed6a08aeaac0062cd582d6669153829259c2d))
