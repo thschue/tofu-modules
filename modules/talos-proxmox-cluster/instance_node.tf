@@ -54,11 +54,11 @@ resource "proxmox_virtual_environment_vm" "talos-vm-node" {
   }
 
   network_device {
-    bridge = "vmbr1"
+    bridge = var.network_bridges.default
   }
 
   network_device {
-    bridge = "vmbr0"
+    bridge = var.network_bridges.storage
   }
 
   operating_system {

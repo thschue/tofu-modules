@@ -1,3 +1,10 @@
+variable "network_bridges" {
+  type = object({
+    default = string
+    storage = string
+  })
+}
+
 variable "cluster_name" {
   type    = string
   default = "dev-cluster"
