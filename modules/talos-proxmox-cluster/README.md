@@ -39,6 +39,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | `"dev-cluster"` | no |
+| <a name="input_network_bridges"></a> [network\_bridges](#input\_network\_bridges) | n/a | <pre>object({<br/>    default = string<br/>    storage = string<br/>  })</pre> | n/a | yes |
 | <a name="input_network_config"></a> [network\_config](#input\_network\_config) | n/a | <pre>object({<br/>    dns_servers = list(string)<br/>    domain      = string<br/>    gateway     = string<br/>  })</pre> | n/a | yes |
 | <a name="input_proxmox"></a> [proxmox](#input\_proxmox) | n/a | <pre>object({<br/>    control_plane_datastore = optional(string, "local-lvm")<br/>    node_datastore          = optional(string, "local-lvm")<br/>    machines                = list(string)<br/>  })</pre> | n/a | yes |
 | <a name="input_talos_control_plane"></a> [talos\_control\_plane](#input\_talos\_control\_plane) | n/a | <pre>object({<br/>    version             = optional(string, "1.9.1")<br/>    nodes               = optional(number, 3)<br/>    subnet              = string<br/>    subnet_cidr         = optional(number, 24)<br/>    cluster_subnet      = string<br/>    cluster_subnet_cidr = optional(number, 24)<br/>    first_id            = number<br/>  })</pre> | n/a | yes |
