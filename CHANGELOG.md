@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.0](https://github.com/thschue/tofu-modules/compare/v0.0.3...v0.1.0) (2025-01-31)
+
+
+### Features
+
+* add argocd module (first version) and example cluster config ([ac1fca9](https://github.com/thschue/tofu-modules/commit/ac1fca9e3ba44868382084d8f7d84c0c6fa95e36))
+* add simple readme ([03021fc](https://github.com/thschue/tofu-modules/commit/03021fc663ed15c08cb56aa13e890cc11558f51b))
+* add token for release please ([029af0b](https://github.com/thschue/tofu-modules/commit/029af0bde2394477cd04f31e425d03bf511c0228))
+* make network bridges configurable ([00bd69e](https://github.com/thschue/tofu-modules/commit/00bd69ed01820f215f3e2f5beb90560ae6cbb700))
+
+
+### Bug Fixes
+
+* some formatting ([309c421](https://github.com/thschue/tofu-modules/commit/309c421e839b67b9bea41821d6a44479dda51cf5))
+
 ## [0.0.3](https://github.com/thschue/tofu-modules/compare/v0.0.2...v0.0.3) (2025-01-26)
 
 
