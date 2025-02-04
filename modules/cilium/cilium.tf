@@ -2,7 +2,7 @@ resource "helm_release" "cilium" {
   repository = "https://helm.cilium.io/"
   chart      = "cilium"
   name       = "cilium"
-  version    = "1.16.6"
+  version    = "1.17.0"
   namespace  = var.namespace
   wait       = true
   set {
