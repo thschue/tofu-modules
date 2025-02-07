@@ -41,4 +41,12 @@ resource "helm_release" "cilium" {
     name  = "l2announcements.enabled"
     value = tostring(var.enable_l2announcements)
   }
+  set {
+    name  = "ingressController.enabled"
+    value = tostring(var.enable_ingress_controller)
+  }
+  set {
+    name  = "ingressController.default"
+    value = tostring(var.enable_ingress_controller)
+  }
 }

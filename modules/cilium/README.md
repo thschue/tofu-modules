@@ -28,6 +28,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_enable_ingress_controller"></a> [enable\_ingress\_controller](#input\_enable\_ingress\_controller) | Enable the Cilium ingress controller | `bool` | `false` | no |
 | <a name="input_enable_l2announcements"></a> [enable\_l2announcements](#input\_enable\_l2announcements) | Enable L2 announcements | `bool` | `false` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace to deploy the Cilium Helm chart | `string` | `"kube-system"` | no |
 

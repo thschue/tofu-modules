@@ -9,3 +9,9 @@ variable "enable_l2announcements" {
   type        = bool
   default     = false
 }
+
+variable "enable_ingress_controller" {
+  description = "Enable the Cilium ingress controller"
+  type        = bool
+  default     = false
+}
