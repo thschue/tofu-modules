@@ -6,14 +6,14 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
-| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.70.0 |
+| <a name="requirement_proxmox"></a> [proxmox](#requirement\_proxmox) | 0.70.1 |
 | <a name="requirement_talos"></a> [talos](#requirement\_talos) | 0.7.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.70.0 |
+| <a name="provider_proxmox"></a> [proxmox](#provider\_proxmox) | 0.70.1 |
 | <a name="provider_talos"></a> [talos](#provider\_talos) | 0.7.1 |
 
 ## Modules
@@ -24,8 +24,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [proxmox_virtual_environment_vm.talos-vm-cp](https://registry.terraform.io/providers/bpg/proxmox/0.70.0/docs/resources/virtual_environment_vm) | resource |
-| [proxmox_virtual_environment_vm.talos-vm-node](https://registry.terraform.io/providers/bpg/proxmox/0.70.0/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.talos-vm-cp](https://registry.terraform.io/providers/bpg/proxmox/0.70.1/docs/resources/virtual_environment_vm) | resource |
+| [proxmox_virtual_environment_vm.talos-vm-node](https://registry.terraform.io/providers/bpg/proxmox/0.70.1/docs/resources/virtual_environment_vm) | resource |
 | [talos_cluster_kubeconfig.this](https://registry.terraform.io/providers/siderolabs/talos/0.7.1/docs/resources/cluster_kubeconfig) | resource |
 | [talos_machine_bootstrap.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.7.1/docs/resources/machine_bootstrap) | resource |
 | [talos_machine_configuration_apply.control_plane](https://registry.terraform.io/providers/siderolabs/talos/0.7.1/docs/resources/machine_configuration_apply) | resource |

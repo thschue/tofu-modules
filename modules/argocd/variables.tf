@@ -11,4 +11,5 @@ variable "apps" {
     revision = optional(string, "HEAD")
     key      = string
   }))
+  default = []
 }

@@ -37,4 +37,8 @@ resource "helm_release" "cilium" {
     name  = "k8sServicePort"
     value = "7445"
   }
+  set {
+    name  = "l2announcements.enabled"
+    value = tostring(var.enable_l2announcements)
+  }
 }
