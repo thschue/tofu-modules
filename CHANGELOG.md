@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0](https://github.com/thschue/tofu-modules/compare/v0.0.4...v0.1.0) (2025-02-07)
+
+
+### Features
+
+* add ingress to cilium module ([fe4082b](https://github.com/thschue/tofu-modules/commit/fe4082bf55f6f94c5ca3f46a378c6d8607613021))
+* add l2announcements to cilium module ([35db989](https://github.com/thschue/tofu-modules/commit/35db98922aeecb09d52e26ec9c0c8c115a10efd9))
+
 ## [0.1.0](https://github.com/thschue/tofu-modules/compare/v0.0.3...v0.1.0) (2025-01-31)
 
 
