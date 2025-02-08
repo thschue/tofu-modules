@@ -10,11 +10,3 @@ variable "node_network" {
     vlan   = number
   })
 }
-
-variable "load_balancer_network" {
-  description = "The network configuration for the services"
-  type = object({
-    subnet = string
-    vlan   = number
-  })
-}

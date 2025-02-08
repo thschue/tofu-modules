@@ -5,11 +5,3 @@ resource "unifi_network" "k8s_nodes" {
   purpose      = "corporate"
   dhcp_enabled = false
 }
-
-resource "unifi_network" "k8s_services" {
-  name         = "k8s-${var.cluster_name}-services"
-  vlan_id      = var.load_balancer_network.vlan
-  subnet       = var.load_balancer_network.subnet
-  purpose      = "corporate"
-  dhcp_enabled = false
-}

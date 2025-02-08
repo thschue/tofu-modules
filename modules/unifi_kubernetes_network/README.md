@@ -23,20 +23,17 @@ No modules.
 | Name | Type |
 |------|------|
 | [unifi_network.k8s_nodes](https://registry.terraform.io/providers/ubiquiti-community/unifi/0.41.2/docs/resources/network) | resource |
-| [unifi_network.k8s_services](https://registry.terraform.io/providers/ubiquiti-community/unifi/0.41.2/docs/resources/network) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | The name of the cluster | `string` | n/a | yes |
-| <a name="input_load_balancer_network"></a> [load\_balancer\_network](#input\_load\_balancer\_network) | The network configuration for the services | <pre>object({<br/>    subnet = string<br/>    vlan   = number<br/>  })</pre> | n/a | yes |
 | <a name="input_node_network"></a> [node\_network](#input\_node\_network) | The network configuration for the nodes | <pre>object({<br/>    subnet = string<br/>    vlan   = number<br/>  })</pre> | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_load_balancer_network"></a> [load\_balancer\_network](#output\_load\_balancer\_network) | n/a |
 | <a name="output_node_network"></a> [node\_network](#output\_node\_network) | n/a |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->
