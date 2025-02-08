@@ -31,7 +31,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | The name of the cluster | `string` | n/a | yes |
 | <a name="input_load_balancer_network"></a> [load\_balancer\_network](#input\_load\_balancer\_network) | The network configuration for the services | <pre>object({<br/>    subnet = string<br/>    vlan   = number<br/>  })</pre> | n/a | yes |
-| <a name="input_node_network"></a> [node\_network](#input\_node\_network) | The network configuration for the nodes | <pre>object({<br/>    subnet = string<br/>    dns    = list(string)<br/>    vlan   = number<br/>  })</pre> | n/a | yes |
+| <a name="input_node_network"></a> [node\_network](#input\_node\_network) | The network configuration for the nodes | <pre>object({<br/>    subnet = string<br/>    vlan   = number<br/>  })</pre> | n/a | yes |
 
 ## Outputs
 

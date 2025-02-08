@@ -7,7 +7,6 @@ variable "node_network" {
   description = "The network configuration for the nodes"
   type = object({
     subnet = string
-    dns    = list(string)
     vlan   = number
   })
 }

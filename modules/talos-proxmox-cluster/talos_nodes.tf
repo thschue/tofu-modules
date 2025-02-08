@@ -11,7 +11,7 @@ data "talos_machine_configuration" "node" {
         kubelet = {
           nodeIP = {
             validSubnets = [
-              var.talos_node.subnet,
+              var.talos_network.subnet,
             ]
           }
         },
@@ -33,6 +33,6 @@ resource "talos_machine_configuration_apply" "node" {
   count                       = var.talos_node.nodes
   client_configuration        = talos_machine_secrets.talos.client_configuration
   machine_configuration_input = data.talos_machine_configuration.node[count.index].machine_configuration
-  node                        = cidrhost(var.talos_node.subnet, count.index + 3)
+  node                        = cidrhost(local.node_network, count.index + 3)
 }
 

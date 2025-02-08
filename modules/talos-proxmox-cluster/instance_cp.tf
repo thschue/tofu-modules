@@ -40,21 +40,19 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     interface = "ide0"
   }
 
-  dynamic "initialization" {
-    for_each = var.talos_control_plane.static_networking ? [1] : []
-    content {
-      dns {
-        servers = var.network_config.dns_servers
-        domain  = var.network_config.domain
-      }
-      ip_config {
-        ipv4 {
-          address = "${cidrhost(var.talos_control_plane.subnet, count.index + 3)}/${var.talos_control_plane.subnet_cidr}"
-          gateway = var.network_config.gateway
-        }
+  initialization {
+    dns {
+      servers = var.network_config.dns_servers
+      domain  = var.network_config.domain
+    }
+    ip_config {
+      ipv4 {
+        address = "${cidrhost(local.cp_network, count.index + 3)}/${cidrnetmask(local.cp_network)}"
+        gateway = var.network_config.gateway
       }
     }
   }
+
 
   network_device {
     bridge  = var.network_bridges.default
@@ -75,6 +73,7 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
 
   serial_device {}
 }
+
 
 locals {
   kubeconfig_data = {

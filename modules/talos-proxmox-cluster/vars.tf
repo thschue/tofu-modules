@@ -19,13 +19,17 @@ variable "proxmox" {
   })
 }
 
+variable "talos_network" {
+  type = object({
+    subnet = string
+  })
+}
+
 variable "talos_control_plane" {
   type = object({
     static_networking   = optional(bool, false)
     version             = optional(string, "1.9.1")
     nodes               = optional(number, 3)
-    subnet              = string
-    subnet_cidr         = optional(number, 24)
     cluster_subnet      = string
     cluster_subnet_cidr = optional(number, 24)
     first_id            = number
@@ -37,8 +41,6 @@ variable "talos_node" {
     static_networking   = optional(bool, false)
     version             = optional(string, "1.9.1")
     nodes               = optional(number, 3)
-    subnet              = string
-    subnet_cidr         = optional(number, 24)
     cluster_subnet      = string
     cluster_subnet_cidr = optional(number, 24)
     first_id            = number

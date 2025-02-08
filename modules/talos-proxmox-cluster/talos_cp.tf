@@ -1,5 +1,7 @@
 locals {
-  vip_ip = cidrhost(var.talos_control_plane.subnet, 2)
+  vip_ip       = cidrhost(var.talos_network.subnet, 2)
+  cp_network   = cidrsubnet(var.talos_network.subnet, 1, 1)
+  node_network = cidrsubnet(var.talos_network.subnet, 1, 1)
 }
 
 data "talos_machine_configuration" "controller" {
@@ -25,7 +27,7 @@ data "talos_machine_configuration" "controller" {
         kubelet = {
           nodeIP = {
             validSubnets = [
-              var.talos_control_plane.subnet
+              var.talos_network.subnet
             ]
           }
 
@@ -54,14 +56,14 @@ resource "talos_machine_configuration_apply" "control_plane" {
   count                       = var.talos_control_plane.nodes
   client_configuration        = talos_machine_secrets.talos.client_configuration
   machine_configuration_input = data.talos_machine_configuration.controller[count.index].machine_configuration
-  node                        = cidrhost(var.talos_control_plane.subnet, count.index + 3)
+  node                        = cidrhost(local.cp_network, count.index + 3)
 }
 
 resource "talos_machine_bootstrap" "control_plane" {
   depends_on = [
     talos_machine_configuration_apply.control_plane
   ]
-  node                 = cidrhost(var.talos_control_plane.subnet, 3)
+  node                 = cidrhost(local.cp_network, 3)
   client_configuration = talos_machine_secrets.talos.client_configuration
 }
 

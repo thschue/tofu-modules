@@ -40,21 +40,19 @@ resource "proxmox_virtual_environment_vm" "talos-vm-node" {
     interface = "ide0"
   }
 
-  dynamic "initialization" {
-    for_each = var.talos_node.static_networking ? [1] : []
-    content {
-      dns {
-        servers = var.network_config.dns_servers
-        domain  = var.network_config.domain
-      }
-      ip_config {
-        ipv4 {
-          address = "${cidrhost(var.talos_node.subnet, count.index + 3)}/${var.talos_node.subnet_cidr}"
-          gateway = var.network_config.gateway
-        }
+  initialization {
+    dns {
+      servers = var.network_config.dns_servers
+      domain  = var.network_config.domain
+    }
+    ip_config {
+      ipv4 {
+        address = "${cidrhost(local.node_network, count.index + 3)}/${cidrnetmask(local.node_network)}"
+        gateway = var.network_config.gateway
       }
     }
   }
+
 
   network_device {
     bridge = var.network_bridges.default
