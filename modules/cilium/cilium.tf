@@ -54,7 +54,7 @@ resource "helm_release" "cilium" {
 
 resource "helm_release" "cilium_config" {
   count     = var.lb_config.enabled ? 1 : 0
-  chart     = "${path.module}/helm/cilium-loadbalancer"
+  chart     = "${path.module}/charts/cilium-loadbalancer"
   name      = "cilium-loadbalancer"
   version   = "1.0.0"
   namespace = var.namespace
