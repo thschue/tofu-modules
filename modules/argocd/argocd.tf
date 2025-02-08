@@ -51,7 +51,6 @@ resource "kubernetes_secret" "github_keys" {
     "type"     = "git"
     "url"      = each.value.repo
     "name"     = "github-${each.value.name}"
-    "project"  = each.value.project
   }
 
   depends_on = [
