@@ -59,7 +59,7 @@ resource "helm_release" "cilium_config" {
   version   = "1.0.0"
   namespace = var.namespace
   set {
-    name  = "cilium.lb_pool"
+    name  = "lb_ip_pool"
     value = var.lb_config.cidr
   }
 }
