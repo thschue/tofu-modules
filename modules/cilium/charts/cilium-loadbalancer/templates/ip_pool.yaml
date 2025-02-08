@@ -1,4 +1,4 @@
-{{- if .Values.lb_pool }}
+{{- if .Values.lb_ip_pool }}
 apiVersion: "cilium.io/v2alpha1"
 kind: CiliumLoadBalancerIPPool
 metadata:
