@@ -1,0 +1,6 @@
+apiVersion: v2
+name: cilium-loadbalancer
+description: A Helm chart that adds lb configuration for cilium.
+type: application
+version: 0.1.0
+appVersion: 0.1.0

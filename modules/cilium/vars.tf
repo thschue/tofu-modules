@@ -4,14 +4,16 @@ variable "namespace" {
   default     = "kube-system"
 }
 
-variable "enable_l2announcements" {
-  description = "Enable L2 announcements"
-  type        = bool
-  default     = false
-}
-
 variable "enable_ingress_controller" {
   description = "Enable the Cilium ingress controller"
   type        = bool
   default     = false
+}
+
+variable "lb_config" {
+  description = "IP pool for the Cilium load balancer"
+  type = object({
+    enabled = optional(bool, false)
+    cidr    = optional(string, "")
+  })
 }

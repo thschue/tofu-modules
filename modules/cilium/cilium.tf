@@ -4,7 +4,8 @@ resource "helm_release" "cilium" {
   name       = "cilium"
   version    = "1.17.0"
   namespace  = var.namespace
-  wait       = true
+  wait       = var.lb_config.enabled ? false : true
+
   set {
     name  = "ipam.mode"
     value = "kubernetes"
@@ -39,7 +40,7 @@ resource "helm_release" "cilium" {
   }
   set {
     name  = "l2announcements.enabled"
-    value = tostring(var.enable_l2announcements)
+    value = tostring(var.lb_config.enabled)
   }
   set {
     name  = "ingressController.enabled"
@@ -48,5 +49,17 @@ resource "helm_release" "cilium" {
   set {
     name  = "ingressController.default"
     value = tostring(var.enable_ingress_controller)
+  }
+}
+
+resource "helm_release" "cilium_config" {
+  count     = var.lb_config.enabled ? 1 : 0
+  chart     = "${path.module}/helm/cilium-loadbalancer"
+  name      = "cilium-loadbalancer"
+  version   = "1.0.0"
+  namespace = var.namespace
+  set {
+    name  = "cilium.lb_pool"
+    value = var.lb_config.cidr
   }
 }
