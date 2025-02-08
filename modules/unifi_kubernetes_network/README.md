@@ -35,5 +35,8 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_load_balancer_network"></a> [load\_balancer\_network](#output\_load\_balancer\_network) | n/a |
+| <a name="output_node_network"></a> [node\_network](#output\_node\_network) | n/a |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->
