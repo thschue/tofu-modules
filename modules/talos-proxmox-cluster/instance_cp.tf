@@ -53,7 +53,6 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     }
   }
 
-
   network_device {
     bridge  = var.network_bridges.default
     vlan_id = var.network_bridges.default_vlan
