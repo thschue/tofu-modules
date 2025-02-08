@@ -45,11 +45,12 @@ resource "kubernetes_secret" "github_keys" {
     name      = "argo-github-key-${each.value.name}"
   }
   data = {
-    "sshPrivateKey" = each.value.key
-    "type"          = "git"
-    "url"           = each.value.repo
-    "name"          = "github-${each.value.name}"
-    "project"       = "*"
+    "username" = each.value.username
+    "password" = each.value.token
+    "type"     = "git"
+    "url"      = each.value.repo
+    "name"     = "github-${each.value.name}"
+    "project"  = "*"
   }
 
   depends_on = [

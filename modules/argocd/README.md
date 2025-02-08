@@ -32,7 +32,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_apps"></a> [apps](#input\_apps) | n/a | <pre>list(object({<br/>    name     = string<br/>    repo     = string<br/>    path     = optional(string, "/")<br/>    revision = optional(string, "HEAD")<br/>    key      = string<br/>  }))</pre> | `[]` | no |
+| <a name="input_apps"></a> [apps](#input\_apps) | n/a | <pre>list(object({<br/>    name     = string<br/>    repo     = string<br/>    path     = optional(string, "/")<br/>    revision = optional(string, "HEAD")<br/>    username = optional(string, "")<br/>    token    = optional(string, "")<br/>  }))</pre> | `[]` | no |
 | <a name="input_argo_namespace"></a> [argo\_namespace](#input\_argo\_namespace) | n/a | `string` | `"argocd"` | no |
 
 ## Outputs

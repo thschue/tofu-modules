@@ -9,7 +9,8 @@ variable "apps" {
     repo     = string
     path     = optional(string, "/")
     revision = optional(string, "HEAD")
-    key      = string
+    username = optional(string, "")
+    token    = optional(string, "")
   }))
   default = []
 }
