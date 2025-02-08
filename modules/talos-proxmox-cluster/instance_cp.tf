@@ -47,7 +47,7 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     }
     ip_config {
       ipv4 {
-        address = "${cidrhost(local.cp_network, count.index + 3)}/${cidrnetmask(local.cp_network)}"
+        address = "${cidrhost(local.cp_network, count.index + 3)}/${var.talos_network.subnet_cidr}"
         gateway = var.network_config.gateway
       }
     }

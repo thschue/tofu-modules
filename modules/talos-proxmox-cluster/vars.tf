@@ -21,7 +21,8 @@ variable "proxmox" {
 
 variable "talos_network" {
   type = object({
-    subnet = string
+    subnet      = string
+    subnet_cidr = optional(number, 24)
   })
 }
 
