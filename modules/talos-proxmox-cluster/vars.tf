@@ -1,7 +1,8 @@
 variable "network_bridges" {
   type = object({
-    default = string
-    storage = string
+    default      = string
+    default_vlan = optional(number, 0)
+    storage      = string
   })
 }
 
@@ -20,6 +21,7 @@ variable "proxmox" {
 
 variable "talos_control_plane" {
   type = object({
+    static_networking   = optional(bool, false)
     version             = optional(string, "1.9.1")
     nodes               = optional(number, 3)
     subnet              = string
@@ -32,6 +34,7 @@ variable "talos_control_plane" {
 
 variable "talos_node" {
   type = object({
+    static_networking   = optional(bool, false)
     version             = optional(string, "1.9.1")
     nodes               = optional(number, 3)
     subnet              = string

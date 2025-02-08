@@ -40,21 +40,25 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     interface = "ide0"
   }
 
-  initialization {
-    dns {
-      servers = var.network_config.dns_servers
-      domain  = var.network_config.domain
-    }
-    ip_config {
-      ipv4 {
-        address = "${cidrhost(var.talos_control_plane.subnet, count.index + 3)}/${var.talos_control_plane.cluster_subnet_cidr}"
-        gateway = var.network_config.gateway
+  dynamic "initialization" {
+    for_each = var.talos_control_plane.static_networking ? [1] : []
+    content {
+      dns {
+        servers = var.network_config.dns_servers
+        domain  = var.network_config.domain
+      }
+      ip_config {
+        ipv4 {
+          address = "${cidrhost(var.talos_control_plane.subnet, count.index + 3)}/${var.talos_control_plane.subnet_cidr}"
+          gateway = var.network_config.gateway
+        }
       }
     }
   }
 
   network_device {
-    bridge = var.network_bridges.default
+    bridge  = var.network_bridges.default
+    vlan_id = var.network_bridges.default_vlan
   }
 
   network_device {

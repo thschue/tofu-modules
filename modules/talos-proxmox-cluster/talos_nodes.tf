@@ -14,7 +14,6 @@ data "talos_machine_configuration" "node" {
               var.talos_node.subnet,
             ]
           }
-
         },
         network = {
           interfaces = [
