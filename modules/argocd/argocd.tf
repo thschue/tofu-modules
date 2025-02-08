@@ -25,6 +25,7 @@ resource "helm_release" "argocd_app" {
       git_repo_url      = each.value.repo,
       git_repo_path     = each.value.path
       git_repo_revision = each.value.revision
+      project           = each.value.project
     })
   ]
 
@@ -50,7 +51,7 @@ resource "kubernetes_secret" "github_keys" {
     "type"     = "git"
     "url"      = each.value.repo
     "name"     = "github-${each.value.name}"
-    "project"  = "*"
+    "project"  = each.value.project
   }
 
   depends_on = [

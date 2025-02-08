@@ -11,6 +11,7 @@ variable "apps" {
     revision = optional(string, "HEAD")
     username = optional(string, "")
     token    = optional(string, "")
+    project  = optional(string, "default")
   }))
   default = []
 }

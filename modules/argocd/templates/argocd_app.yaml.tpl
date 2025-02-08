@@ -1,7 +1,7 @@
 applications:
   platform-deployment:
     namespace: ${namespace}
-    project: platform
+    project: ${project}
     source:
       repoURL: ${git_repo_url}
       targetRevision: ${git_repo_revision}
