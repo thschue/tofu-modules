@@ -1,6 +1,6 @@
 locals {
   vip_ip       = cidrhost(var.talos_network.subnet, 2)
-  cp_network   = cidrsubnet(var.talos_network.subnet, 1, 1)
+  cp_network   = cidrsubnet(var.talos_network.subnet, 1, 0)
   node_network = cidrsubnet(var.talos_network.subnet, 1, 1)
 }
 
