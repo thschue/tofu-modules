@@ -27,7 +27,7 @@ data "talos_machine_configuration" "controller" {
         kubelet = {
           nodeIP = {
             validSubnets = [
-              "${var.talos_control_plane.cluster_subnet}/${var.talos_control_plane.cluster_subnet_cidr}"
+              cidrsubnet(var.talos_network.subnet, 0, 0),
             ]
           }
 
