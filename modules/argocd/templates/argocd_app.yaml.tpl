@@ -1,5 +1,5 @@
 applications:
-  platform-deployment:
+  ${name}-deployment:
     namespace: ${namespace}
     project: ${project}
     source:
@@ -16,9 +16,8 @@ applications:
       syncOptions:
       - CreateNamespace=true
 projects:
-  platform:
+  ${name}:
     namespace: ${namespace}
-    description: Core Platform Components
     clusterResourceWhitelist:
     - group: '*'
       kind: '*'

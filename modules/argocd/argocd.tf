@@ -21,6 +21,7 @@ resource "helm_release" "argocd_app" {
 
   values = [
     templatefile("${path.module}/templates/argocd_app.yaml.tpl", {
+      name              = each.value.name,
       namespace         = var.argo_namespace,
       git_repo_url      = each.value.repo,
       git_repo_path     = each.value.path
@@ -50,7 +51,6 @@ resource "kubernetes_secret" "github_keys" {
     "password" = each.value.token
     "type"     = "git"
     "url"      = each.value.repo
-    "name"     = "github-${each.value.name}"
   }
 
   depends_on = [
