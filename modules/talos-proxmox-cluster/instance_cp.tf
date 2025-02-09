@@ -34,6 +34,16 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     size         = 40
   }
 
+  dynamic "disk" {
+    for_each = var.rook.control_plane_enabled ? [1] : []
+    content {
+      interface    = "scsi1"
+      datastore_id = var.proxmox.control_plane_datastore
+      file_format  = "raw"
+      size         = var.rook.control_plane_size
+    }
+  }
+
   cdrom {
     enabled   = true
     file_id   = "local:iso/talos-1-9.iso"

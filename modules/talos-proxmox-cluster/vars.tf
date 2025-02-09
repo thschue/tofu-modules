@@ -19,6 +19,15 @@ variable "proxmox" {
   })
 }
 
+variable "rook" {
+  type = object({
+    control_plane_enabled = optional(bool, false)
+    control_plane_size    = optional(number, "20")
+    nodes_enabled         = optional(bool, false)
+    nodes_size            = optional(number, "20")
+  })
+}
+
 variable "talos_network" {
   type = object({
     subnet      = string
