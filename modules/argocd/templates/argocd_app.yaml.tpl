@@ -1,11 +1,12 @@
 applications:
-  ${name}-deployment:
+  %{~ for app in applications  ~}
+  ${app.name}-deployment:
     namespace: ${namespace}
-    project: ${project}
+    project: ${app.project}
     source:
-      repoURL: ${git_repo_url}
-      targetRevision: ${git_repo_revision}
-      path: ${git_repo_path}
+      repoURL: ${app.repo}
+      targetRevision: ${app.revision}
+      path: ${app.path}
     destination:
       server: "https://kubernetes.default.svc"
       namespace: ${namespace}
@@ -15,8 +16,10 @@ applications:
         selfHeal: true
       syncOptions:
       - CreateNamespace=true
+  %{~ endfor ~}
 projects:
-  ${name}:
+  %{~ for project in projects  ~}
+  ${project}:
     namespace: ${namespace}
     clusterResourceWhitelist:
     - group: '*'
@@ -26,4 +29,5 @@ projects:
     destinations:
     - server: '*'
       namespace: '*'
+    %{~ endfor ~}
 

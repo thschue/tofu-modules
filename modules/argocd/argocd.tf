@@ -9,10 +9,7 @@ resource "helm_release" "argocd" {
 }
 
 resource "helm_release" "argocd_app" {
-  for_each = {
-    for app in var.apps : app.name => app
-  }
-  name       = "argo-app-${each.value.name}"
+  name       = "argo-configuration"
   chart      = "argocd-apps"
   version    = "2.0.2"
   atomic     = true
@@ -21,12 +18,9 @@ resource "helm_release" "argocd_app" {
 
   values = [
     templatefile("${path.module}/templates/argocd_app.yaml.tpl", {
-      name              = each.value.name,
-      namespace         = var.argo_namespace,
-      git_repo_url      = each.value.repo,
-      git_repo_path     = each.value.path
-      git_repo_revision = each.value.revision
-      project           = each.value.project
+      namespace    = var.argo_namespace,
+      applications = var.apps
+      projects     = var.projects
     })
   ]
 
@@ -37,7 +31,7 @@ resource "helm_release" "argocd_app" {
 
 resource "kubernetes_secret" "github_keys" {
   for_each = {
-    for app in var.apps : app.name => app
+    for secret in var.repo_secrets : secret.name => secret
   }
   metadata {
     labels = {

@@ -3,14 +3,27 @@ variable "argo_namespace" {
   default = "argocd"
 }
 
+variable "repo_secrets" {
+  type = list(object({
+    name     = string
+    repo     = string
+    username = string
+    token    = string
+  }))
+  default = []
+}
+
+variable "projects" {
+  type    = list(string)
+  default = []
+}
+
 variable "apps" {
   type = list(object({
     name     = string
     repo     = string
     path     = optional(string, "/")
     revision = optional(string, "HEAD")
-    username = optional(string, "")
-    token    = optional(string, "")
     project  = optional(string, "default")
   }))
   default = []
