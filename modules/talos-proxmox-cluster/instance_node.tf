@@ -18,12 +18,12 @@ resource "proxmox_virtual_environment_vm" "talos-vm-node" {
   machine = "q35"
 
   memory {
-    dedicated = 4096 # set equal to dedicated to enable ballooning
+    dedicated = var.talos_node.memory # set equal to dedicated to enable ballooning
   }
 
   boot_order = ["scsi0", "ide0"]
   cpu {
-    cores = 2
+    cores = var.talos_node.cores
     type  = "host"
   }
 

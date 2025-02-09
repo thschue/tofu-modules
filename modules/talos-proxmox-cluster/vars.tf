@@ -37,6 +37,8 @@ variable "talos_network" {
 
 variable "talos_control_plane" {
   type = object({
+    cores               = optional(number, 2)
+    memory              = optional(number, 4096)
     static_networking   = optional(bool, false)
     version             = optional(string, "1.9.1")
     nodes               = optional(number, 3)
@@ -48,6 +50,8 @@ variable "talos_control_plane" {
 
 variable "talos_node" {
   type = object({
+    cores               = optional(number, 2)
+    memory              = optional(number, 4096)
     static_networking   = optional(bool, false)
     version             = optional(string, "1.9.1")
     nodes               = optional(number, 3)
