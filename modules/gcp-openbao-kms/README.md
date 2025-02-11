@@ -34,6 +34,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_location"></a> [location](#input\_location) | The location of the KMS | `string` | `"europe-west1"` | no |
 | <a name="input_openbao_name"></a> [openbao\_name](#input\_openbao\_name) | The name of the OpenBao instance | `string` | n/a | yes |
+| <a name="input_project"></a> [project](#input\_project) | The project where the KMS runs | `string` | n/a | yes |
 
 ## Outputs
 

@@ -8,3 +8,8 @@ variable "location" {
   type        = string
   default     = "europe-west1"
 }
+
+variable "project" {
+  type        = string
+  description = "The project where the KMS runs"
+}
