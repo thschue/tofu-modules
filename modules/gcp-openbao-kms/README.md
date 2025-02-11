@@ -40,5 +40,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_crypto_key"></a> [crypto\_key](#output\_crypto\_key) | n/a |
+| <a name="output_key_ring"></a> [key\_ring](#output\_key\_ring) | n/a |
 | <a name="output_service_account_key"></a> [service\_account\_key](#output\_service\_account\_key) | n/a |
 <!-- END OF PRE-COMMIT-OPENTOFU DOCS HOOK -->
