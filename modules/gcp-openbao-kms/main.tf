@@ -33,6 +33,17 @@ resource "google_kms_crypto_key_iam_binding" "openbao_kms_permissions" {
   ]
 }
 
+resource "google_kms_crypto_key_iam_binding" "openbao_kms_viewer" {
+  crypto_key_id = google_kms_crypto_key.openbao_key.id
+  role          = "roles/cloudkms.cryptoKeyViewer"
+
+  members = [
+    "serviceAccount:${google_service_account.openbao_sa.email}",
+  ]
+}
+
+
+
 resource "google_service_account_key" "service_account_key" {
   service_account_id = google_service_account.openbao_sa.name
 }

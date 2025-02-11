@@ -24,6 +24,7 @@ No modules.
 |------|------|
 | [google_kms_crypto_key.openbao_key](https://registry.terraform.io/providers/hashicorp/google/6.20.0/docs/resources/kms_crypto_key) | resource |
 | [google_kms_crypto_key_iam_binding.openbao_kms_permissions](https://registry.terraform.io/providers/hashicorp/google/6.20.0/docs/resources/kms_crypto_key_iam_binding) | resource |
+| [google_kms_crypto_key_iam_binding.openbao_kms_viewer](https://registry.terraform.io/providers/hashicorp/google/6.20.0/docs/resources/kms_crypto_key_iam_binding) | resource |
 | [google_kms_key_ring.openbao_ring](https://registry.terraform.io/providers/hashicorp/google/6.20.0/docs/resources/kms_key_ring) | resource |
 | [google_service_account.openbao_sa](https://registry.terraform.io/providers/hashicorp/google/6.20.0/docs/resources/service_account) | resource |
 | [google_service_account_key.service_account_key](https://registry.terraform.io/providers/hashicorp/google/6.20.0/docs/resources/service_account_key) | resource |
