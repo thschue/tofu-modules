@@ -43,7 +43,7 @@ resource "google_kms_crypto_key_iam_binding" "openbao_kms_viewer" {
 }
 
 resource "google_kms_crypto_key_iam_binding" "openbao_kms_admins" {
-  for_each      = var.key_admins
+  for_each      = toset(var.key_admins)
   crypto_key_id = google_kms_crypto_key.openbao_key.id
   role          = "roles/cloudkms.admin"
 
