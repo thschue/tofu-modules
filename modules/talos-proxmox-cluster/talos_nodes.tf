@@ -9,6 +9,9 @@ data "talos_machine_configuration" "node" {
     yamlencode({
       machine = {
         kubelet = {
+          extraArgs = {
+            rotate-server-certificates = "true"
+          }
           nodeIP = {
             validSubnets = [
               cidrsubnet(var.talos_network.subnet, 0, 0),
