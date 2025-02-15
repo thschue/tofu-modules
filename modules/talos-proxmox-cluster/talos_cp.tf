@@ -14,6 +14,9 @@ data "talos_machine_configuration" "controller" {
   config_patches = [
     yamlencode({
       cluster = {
+        extraManifests = [
+          "https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/refs/tags/v0.9.0/deploy/standalone-install.yaml"
+        ]
         proxy = {
           disabled = true
         }
