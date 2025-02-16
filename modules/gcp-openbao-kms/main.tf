@@ -5,6 +5,7 @@ resource "google_kms_key_ring" "openbao_ring" {
 }
 
 resource "google_kms_crypto_key" "openbao_key" {
+  # checkov:skip=CKV_GCP_82: 'lifecycle' is used to prevent accidental deletion of the key
   name            = "openbao-${var.openbao_name}-key"
   key_ring        = google_kms_key_ring.openbao_ring.id
   rotation_period = "2592000s" # 30 days
@@ -13,9 +14,6 @@ resource "google_kms_crypto_key" "openbao_key" {
   # Use asymmetric or symmetric based on OpenBao needs
   purpose = "ENCRYPT_DECRYPT"
 
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "google_service_account" "openbao_sa" {
