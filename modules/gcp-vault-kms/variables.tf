@@ -1,4 +1,4 @@
-variable "openbao_name" {
+variable "vault_name" {
   description = "The name of the OpenBao instance"
   type        = string
 }

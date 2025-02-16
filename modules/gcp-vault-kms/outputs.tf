@@ -4,11 +4,11 @@ output "service_account_key" {
 }
 
 output "key_ring" {
-  value     = google_kms_key_ring.openbao_ring.name
+  value     = google_kms_key_ring.vault_ring.name
   sensitive = true
 }
 
 output "crypto_key" {
-  value     = google_kms_crypto_key.openbao_key.name
+  value     = google_kms_crypto_key.vault_key.name
   sensitive = true
 }
