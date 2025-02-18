@@ -2,19 +2,28 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.opentofu.org/hashicorp/google" {
-  version     = "6.20.0"
-  constraints = "6.20.0"
+  version     = "6.21.0"
+  constraints = "6.21.0"
   hashes = [
-    "h1:EM8noGC1e3wj4iFhK3zJLSRcuiHdcGV6R/WvfzCKNEk=",
-    "zh:08eb648fdb6377a08c8b6a48e34c82951ffc5f0c948d60e95266514bc3b1600d",
-    "zh:16d272f62af4666970a6a8241f4f2debbfbe75d9e61df3c8dc31ca5cb717290d",
-    "zh:216d15c8bf372c547e7f4ef8ba8d1247805494d59c3c39f2aca693b45c45272a",
-    "zh:7d70f3c57039fd123efbbf4ae127aa1a6c8117f6593d681fd706be5c778270ae",
-    "zh:81085d808a997a77d7e344ab6f71a846f24b41a0de06661998363ec18f98490c",
-    "zh:affaed3afe8ce631e6740e983299560507942dd2382166080964166771c17e65",
-    "zh:b633d49bad842ae75815a9bf9bf0124f94ec6890b93e929ed900889046900e7e",
-    "zh:cc7155f2f210f31a9aca043f033d6684d56f79ece7e48d67c5f39593d2f0ce03",
-    "zh:d2d38ca918bfb32e81c509c361cb2abdafbd36d0aeb03bbaadb538d8d7667358",
-    "zh:e0904e41cd68567b3f0b689242626c7164303af236551cc0a85ae7252593a238",
+    "h1:53b0WZShRk7amn90dO4ZnNiMNTgS/BgrECM8+u7fifE=",
+    "h1:6nybs2VEf5SXmtMVDmADqzyNoPrDVKpDBR1lxcjq7ro=",
+    "h1:ACgtvMnFcEmzGZQ42eUHZZtK7fMuzC86u6ednHcssLE=",
+    "h1:AWBsFGL2FGXVZ/aS/xuwFvLVWehcmOx4iT4b6ctn9CQ=",
+    "h1:PsYM0QXC9rsNjpEs6BG/+ik8UT5t0AsWtk4q/9prFWg=",
+    "h1:fC2A4gVP5+7wFvbDWFGveDIAkXmPdEHIDOXTa9s7UwM=",
+    "h1:gcGNm736tvFH9rJHUIdkijq+1h6Whfuv6H3rOzp3zKk=",
+    "h1:tLaai/VOKtHpJtoOECTYJrO17/CLjl8zSrrAAk9g7yk=",
+    "h1:tVsdVwQI3pXBdjc5gZIiH3Yi2pTvZd3gRTU5XfS+Gxg=",
+    "h1:xVwGz8CAy/v1vs6zWdjC+lC4/b6WQif+TAAaF+BXekU=",
+    "zh:253fb7401f3cbc3a534dfd4e2217c5368a047cb19a6906663885d649ce908be5",
+    "zh:37fc56ca7739f3f6d7864e59cb9fe497324158d94e9af0c600137b122707c835",
+    "zh:5b42c8b594b2cc965a7c1c3a045cf3d14cb2711f5e9804b4d9583326f4facd1c",
+    "zh:7d82e318be528028a53995476120c5f4f9967eb26cd687b142b259a49e511f9f",
+    "zh:8659589a7e8c85d1374983abd1dcdfc5d3de1bb4a8f6810607ecc0cb16470ef0",
+    "zh:a74ca1923f94b3630b27008878179cd28704dbd201561b8b9254eba60d672f64",
+    "zh:d6ea01e88cc8e84e4dd73e54be4a7d34a67fe7cc3585ce94b2185e7d9f187f9d",
+    "zh:debcd9e4e2124310c32037dc867e6a8adc9d62e324a2e99eb3c6311f72c82ef5",
+    "zh:e582036f9b5a319776e036c26b76b33357764e940f6b8dd0838881f38dd69f04",
+    "zh:f8d68eedee5e9b61e396de7d9930e8d551496c03591fa94899965813c6fb531f",
   ]
 }
