@@ -2,6 +2,10 @@ resource "google_kms_key_ring" "vault_ring" {
   name     = "vault-${var.vault_name}-keyring"
   location = var.location
   project  = var.project
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "google_kms_crypto_key" "vault_key" {
@@ -13,6 +17,10 @@ resource "google_kms_crypto_key" "vault_key" {
 
   # Use asymmetric or symmetric based on OpenBao needs
   purpose = "ENCRYPT_DECRYPT"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 
 }
 
