@@ -11,7 +11,7 @@ variable "repo_secret" {
     username = string
     token    = string
   })
-  default = {}
+  default = null
 }
 
 variable "deploy_key" {
@@ -21,7 +21,7 @@ variable "deploy_key" {
     repo = string
     key  = string
   })
-  default = {}
+  default = null
 }
 
 variable "projects" {
