@@ -30,21 +30,19 @@ resource "helm_release" "argocd_app" {
 }
 
 resource "kubernetes_secret" "github_tokens" {
-  for_each = {
-    for secret in var.repo_secrets : secret.name => secret
-  }
+  count = var.repo_secret != null ? 1 : 0
   metadata {
     labels = {
       "argocd.argoproj.io/secret-type" = "repository",
     }
     namespace = helm_release.argocd.namespace
-    name      = "argo-github-token-${each.value.name}"
+    name      = "argo-github-token-${var.repo_secret.name}"
   }
   data = {
-    "username" = each.value.username
-    "password" = each.value.token
+    "username" = var.repo_secret.username
+    "password" = var.repo_secret.token
     "type"     = "git"
-    "url"      = each.value.repo
+    "url"      = var.repo_secret.repo
   }
 
   depends_on = [
@@ -53,20 +51,18 @@ resource "kubernetes_secret" "github_tokens" {
 }
 
 resource "kubernetes_secret" "github_deploy_keys" {
-  for_each = {
-    for secret in var.deploy_keys : secret.name => secret
-  }
+  count = var.deploy_key != null ? 1 : 0
   metadata {
     labels = {
       "argocd.argoproj.io/secret-type" = "repository",
     }
     namespace = helm_release.argocd.namespace
-    name      = "argo-github-key-${each.value.name}"
+    name      = "argo-github-key-${var.deploy_key.name}"
   }
   data = {
     "type"          = "git"
-    "url"           = each.value.repo
-    "sshPrivateKey" = each.value.key
+    "url"           = var.deploy_key.repo
+    "sshPrivateKey" = var.deploy_key.key
   }
 
   depends_on = [

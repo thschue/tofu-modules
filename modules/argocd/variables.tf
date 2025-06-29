@@ -3,24 +3,24 @@ variable "argo_namespace" {
   default = "argocd"
 }
 
-variable "repo_secrets" {
+variable "repo_secret" {
   sensitive = true
-  type = list(object({
+  type = object({
     name     = string
     repo     = string
     username = string
     token    = string
-  }))
+  })
   default = []
 }
 
-variable "deploy_keys" {
+variable "deploy_key" {
   sensitive = true
-  type = list(object({
+  type = object({
     name = string
     repo = string
     key  = string
-  }))
+  })
   default = []
 }
 
