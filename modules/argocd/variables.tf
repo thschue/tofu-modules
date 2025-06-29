@@ -36,7 +36,6 @@ variable "github_app" {
   default = null
 }
 
-
 variable "projects" {
   type = list(string)
   default = []

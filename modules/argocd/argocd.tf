@@ -77,13 +77,13 @@ resource "kubernetes_secret" "github_app" {
       "argocd.argoproj.io/secret-type" = "repository",
     }
     namespace = helm_release.argocd.namespace
-    name      = "argo-github-app-${var.deploy_key.name}"
+    name      = "argo-github-app-${var.github_app.name}"
   }
   data = {
     "githubAppID"             = var.github_app.app_id
     "githubAppInstallationID" = var.github_app.installation_id
     "githubAppPrivateKey"     = var.github_app.private_key
-    "url"                     = var.deploy_key.repo
+    "url"                     = var.github_app.repo
   }
 
   depends_on = [
