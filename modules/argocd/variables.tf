@@ -24,6 +24,19 @@ variable "deploy_key" {
   default = null
 }
 
+variable "github_app" {
+  sensitive = true
+  type = object({
+    name            = string
+    repo            = string
+    installation_id = string
+    private_key     = string
+    app_id          = string
+  })
+  default = null
+}
+
+
 variable "projects" {
   type = list(string)
   default = []

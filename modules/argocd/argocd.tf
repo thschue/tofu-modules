@@ -69,3 +69,24 @@ resource "kubernetes_secret" "github_deploy_keys" {
     helm_release.argocd
   ]
 }
+
+resource "kubernetes_secret" "github_app" {
+  count = var.github_app != null ? 1 : 0
+  metadata {
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository",
+    }
+    namespace = helm_release.argocd.namespace
+    name      = "argo-github-app-${var.deploy_key.name}"
+  }
+  data = {
+    "githubAppID"             = var.github_app.app_id
+    "githubAppInstallationID" = var.github_app.installation_id
+    "githubAppPrivateKey"     = var.github_app.private_key
+    "url"                     = var.deploy_key.repo
+  }
+
+  depends_on = [
+    helm_release.argocd
+  ]
+}
