@@ -4,6 +4,7 @@ variable "argo_namespace" {
 }
 
 variable "repo_secrets" {
+  sensitive = true
   type = list(object({
     name     = string
     repo     = string
@@ -13,18 +14,28 @@ variable "repo_secrets" {
   default = []
 }
 
+variable "deploy_keys" {
+  sensitive = true
+  type = list(object({
+    name = string
+    repo = string
+    key  = string
+  }))
+  default = []
+}
+
 variable "projects" {
-  type    = list(string)
+  type = list(string)
   default = []
 }
 
 variable "apps" {
   type = list(object({
-    name     = string
-    repo     = string
-    path     = optional(string, "/")
+    name = string
+    repo = string
+    path = optional(string, "/")
     revision = optional(string, "HEAD")
-    project  = optional(string, "default")
+    project = optional(string, "default")
   }))
   default = []
 }
