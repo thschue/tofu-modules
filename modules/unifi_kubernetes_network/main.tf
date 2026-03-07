@@ -4,4 +4,5 @@ resource "unifi_network" "k8s_nodes" {
   subnet       = var.node_network.subnet
   purpose      = "corporate"
   dhcp_enabled = false
+  enabled      = true
 }
