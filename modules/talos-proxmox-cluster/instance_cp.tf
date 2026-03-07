@@ -46,7 +46,6 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     }
   }
 
-
   initialization {
     dns {
       servers = var.network_config.dns_servers
