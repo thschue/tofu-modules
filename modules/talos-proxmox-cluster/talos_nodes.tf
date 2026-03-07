@@ -37,6 +37,5 @@ resource "talos_machine_configuration_apply" "node" {
   client_configuration        = talos_machine_secrets.talos.client_configuration
   machine_configuration_input = data.talos_machine_configuration.node[count.index].machine_configuration
   node                        = cidrhost(local.node_network, count.index + 3)
-  apply_mode                  = "staged_if_needing_reboot"
 }
 

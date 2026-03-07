@@ -63,7 +63,6 @@ resource "talos_machine_configuration_apply" "control_plane" {
   client_configuration        = talos_machine_secrets.talos.client_configuration
   machine_configuration_input = data.talos_machine_configuration.controller[count.index].machine_configuration
   node                        = cidrhost(local.cp_network, count.index + 3)
-  apply_mode                  = "staged_if_needing_reboot"
 }
 
 resource "talos_machine_bootstrap" "control_plane" {
