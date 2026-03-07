@@ -20,9 +20,34 @@ data "talos_machine_configuration" "node" {
         },
       }
     }),
+
+    # Static IP for eth0 so the node keeps connectivity after reboot
     yamlencode({
-      version = "v1alpha1"
-      kind    = "AddressConfig"
+      version  = "v1alpha1"
+      kind     = "AddressConfig"
+      metadata = { name = "eth0-static-ip" }
+      spec = {
+        interface = "eth0"
+        addresses = ["${cidrhost(local.node_network, count.index + 3)}/${split("/", local.node_network)[1]}"]
+      }
+    }),
+
+    # Default route so the node can reach the gateway after reboot
+    yamlencode({
+      version  = "v1alpha1"
+      kind     = "RouteConfig"
+      metadata = { name = "eth0-default-route" }
+      spec = {
+        gateway = var.network_config.gateway
+        network = "0.0.0.0/0"
+        outLinkName = "eth0"
+      }
+    }),
+
+    # Static IP for eth1
+    yamlencode({
+      version  = "v1alpha1"
+      kind     = "AddressConfig"
       metadata = { name = "eth1-static-ip" }
       spec = {
         interface = "eth1"

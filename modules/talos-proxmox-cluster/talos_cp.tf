@@ -43,7 +43,19 @@ data "talos_machine_configuration" "controller" {
       metadata = { name = "eth0-static-ip" }
       spec = {
         interface = "eth0"
-        addresses = ["${cidrhost(local.cp_network, count.index + 3)}/${var.talos_network.subnet_cidr}"]
+        addresses = ["${cidrhost(local.cp_network, count.index + 3)}/${split("/", local.cp_network)[1]}"]
+      }
+    }),
+
+    # Default route so the control plane can reach the gateway after reboot
+    yamlencode({
+      version  = "v1alpha1"
+      kind     = "RouteConfig"
+      metadata = { name = "eth0-default-route" }
+      spec = {
+        gateway     = var.network_config.gateway
+        network     = "0.0.0.0/0"
+        outLinkName = "eth0"
       }
     }),
 
