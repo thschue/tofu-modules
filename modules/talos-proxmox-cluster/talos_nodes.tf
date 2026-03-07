@@ -22,10 +22,6 @@ data "talos_machine_configuration" "node" {
           interfaces = [
             # see https://www.talos.dev/v1.8/talos-guides/network/vip/
             {
-              interface = "eth0"
-              address = "${cidrhost(local.node_network, count.index + 3)}/${var.talos_network.subnet_cidr}"
-            },
-            {
               interface = "eth1"
               addresses = ["${cidrhost(var.talos_node.cluster_subnet, count.index + 3)}/${var.talos_node.cluster_subnet_cidr}"]
             }
