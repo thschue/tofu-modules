@@ -40,7 +40,7 @@ variable "talos_control_plane" {
     cores               = optional(number, 2)
     memory              = optional(number, 4096)
     static_networking   = optional(bool, false)
-    version             = optional(string, "1.9.1")
+    version             = optional(string, "1.12.4")
     nodes               = optional(number, 3)
     cluster_subnet      = string
     cluster_subnet_cidr = optional(number, 24)
@@ -53,7 +53,7 @@ variable "talos_node" {
     cores               = optional(number, 2)
     memory              = optional(number, 4096)
     static_networking   = optional(bool, false)
-    version             = optional(string, "1.9.1")
+    version             = optional(string, "1.12.4")
     nodes               = optional(number, 3)
     cluster_subnet      = string
     cluster_subnet_cidr = optional(number, 24)
