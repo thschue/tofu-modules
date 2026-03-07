@@ -43,6 +43,7 @@ data "talos_machine_configuration" "controller" {
             # see https://www.talos.dev/v1.8/talos-guides/network/vip/
             {
               interface = "eth0"
+              addresses = ["${cidrhost(local.cp_network, count.index + 3)}/${split("/", var.talos_network.subnet)[1]}"]
               vip = {
                 ip = local.vip_ip
               }
