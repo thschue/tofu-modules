@@ -45,6 +45,7 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
   }
 
   cdrom {
+    enabled   = true
     file_id   = "local:iso/talos-1-12.iso"
     interface = "ide0"
   }
