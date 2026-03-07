@@ -18,17 +18,17 @@ data "talos_machine_configuration" "node" {
             ]
           }
         },
-        network = {
-          interfaces = [
-            # see https://www.talos.dev/v1.8/talos-guides/network/vip/
-            {
-              interface = "eth1"
-              addresses = ["${cidrhost(var.talos_node.cluster_subnet, count.index + 3)}/${var.talos_node.cluster_subnet_cidr}"]
-            }
-          ]
-        }
       }
     }),
+    yamlencode({
+      version = "v1alpha1"
+      kind    = "AddressConfig"
+      metadata = { name = "eth1-static-ip" }
+      spec = {
+        interface = "eth1"
+        addresses = ["${cidrhost(var.talos_node.cluster_subnet, count.index + 3)}/${var.talos_node.cluster_subnet_cidr}"]
+      }
+    })
   ]
 }
 

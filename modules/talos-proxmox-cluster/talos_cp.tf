@@ -12,49 +12,51 @@ data "talos_machine_configuration" "controller" {
   machine_type     = "controlplane"
   talos_version    = "v${var.talos_control_plane.version}"
   config_patches = [
+    # Document 1: Core Machine/Cluster Logic (No interface list here)
     yamlencode({
       cluster = {
-        extraManifests = [
-          "https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/refs/tags/v0.10.3/deploy/standalone-install.yaml"
-        ]
-        proxy = {
-          disabled = true
-        }
-        network = {
-          cni = {
-            name = "none"
-          }
-        }
+        extraManifests = ["https://raw.githubusercontent.com/alex1989hu/kubelet-serving-cert-approver/refs/tags/v0.10.3/deploy/standalone-install.yaml"]
+        proxy   = { disabled = true }
+        network = { cni = { name = "none" } }
       }
       machine = {
         kubelet = {
-          extraArgs = {
-            rotate-server-certificates = "true"
-          }
-          nodeIP = {
-            validSubnets = [
-              cidrsubnet(var.talos_network.subnet, 0, 0),
-            ]
-          }
-
-        },
-        network = {
-          interfaces = [
-            # see https://www.talos.dev/v1.8/talos-guides/network/vip/
-            {
-              interface = "eth0"
-              vip = {
-                ip = local.vip_ip
-              }
-            },
-            {
-              interface = "eth1"
-              addresses = ["${cidrhost(var.talos_control_plane.cluster_subnet, count.index + 3)}/${var.talos_control_plane.cluster_subnet_cidr}"]
-            }
-          ]
+          extraArgs = { "rotate-server-certificates" = "true" }
+          nodeIP    = { validSubnets = [cidrsubnet(var.talos_network.subnet, 0, 0)] }
         }
       }
     }),
+
+    # Document 2: The VIP Resource
+    yamlencode({
+      version = "v1alpha1"
+      kind    = "VirtualIPConfig"
+      metadata = { name = "controlplane-vip" }
+      spec = {
+        interface = "eth0"
+        ip        = local.vip_ip
+      }
+    }),
+    yamlencode({
+      version = "v1alpha1"
+      kind    = "AddressConfig"
+      metadata = { name = "eth0-static-ip" }
+      spec = {
+        interface = "eth0"
+        addresses = ["${cidrhost(local.cp_network, count.index + 3)}/${var.talos_network.subnet_cidr}"]
+      }
+    }),
+
+    # Document 3: Static IP for eth1 using AddressConfig
+    yamlencode({
+      version = "v1alpha1"
+      kind    = "AddressConfig"
+      metadata = { name = "eth1-static-ip" }
+      spec = {
+        interface = "eth1"
+        addresses = ["${cidrhost(var.talos_control_plane.cluster_subnet, count.index + 3)}/${var.talos_control_plane.cluster_subnet_cidr}"]
+      }
+    })
   ]
 }
 
