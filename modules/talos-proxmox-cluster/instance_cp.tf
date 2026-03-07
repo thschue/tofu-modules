@@ -21,7 +21,8 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     dedicated = var.talos_control_plane.memory # set equal to dedicated to enable ballooning
   }
 
-  boot_order = ["scsi0", "ide0"]
+  boot_order = ["scsi0"]
+
   cpu {
     cores = var.talos_control_plane.cores
     type  = "host"
@@ -30,6 +31,7 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
   disk {
     interface    = "scsi0"
     datastore_id = var.proxmox.control_plane_datastore
+    file_id      = proxmox_virtual_environment_download_file.talos_nocloud_image[var.proxmox.machines[count.index % length(var.proxmox.machines)]].id
     file_format  = "raw"
     size         = 40
   }
@@ -44,11 +46,6 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     }
   }
 
-  cdrom {
-    enabled   = true
-    file_id   = "local:iso/talos-1-12.iso"
-    interface = "ide0"
-  }
 
   initialization {
     dns {
@@ -57,7 +54,7 @@ resource "proxmox_virtual_environment_vm" "talos-vm-cp" {
     }
     ip_config {
       ipv4 {
-        address = "${cidrhost(local.cp_network, count.index + 3)}/${var.talos_network.subnet_cidr}"
+        address = "${cidrhost(local.cp_network, count.index + 3)}/${split("/", local.cp_network)[1]}"
         gateway = var.network_config.gateway
       }
     }
