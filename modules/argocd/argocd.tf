@@ -11,7 +11,7 @@ resource "helm_release" "argocd" {
 resource "helm_release" "argocd_app" {
   name       = "argo-configuration"
   chart      = "argocd-apps"
-  version    = "2.0.4"
+  version    = "2.0.5"
   atomic     = true
   wait       = true
   repository = "https://argoproj.github.io/argo-helm"
